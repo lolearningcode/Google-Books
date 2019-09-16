@@ -65,15 +65,15 @@ extension BookSearchTableViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         
-        BooksController.shared.fetchBooks(books: searchText) { (books) in
+        BooksController.shared.fetchBooks(books: searchText) { [weak self] (books) in
             DispatchQueue.main.async {
-                self.bookResults = books
+                self?.bookResults = books
                 
                 if !books.isEmpty {
-                    self.emptyResultsLabel.isHidden = true
+                    self?.emptyResultsLabel.isHidden = true
                 }
                 
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
         

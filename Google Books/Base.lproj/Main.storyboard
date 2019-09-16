@@ -196,7 +196,7 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="99.776785714285708"/>
         </scene>
-        <!--Favorite Boooks-->
+        <!--Favorite Books-->
         <scene sceneID="w8s-jZ-9BO">
             <objects>
                 <tableViewController storyboardIdentifier="SavedBooksTableViewController" id="awG-cq-VfK" customClass="SavedBooksTableViewController" customModule="Google_Books" customModuleProvider="target" sceneMemberID="viewController">
@@ -274,7 +274,7 @@
                             <outlet property="delegate" destination="awG-cq-VfK" id="6pG-AO-fCt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Favorite Boooks" id="KMw-jx-wtm"/>
+                    <navigationItem key="navigationItem" title="Favorite Books" id="KMw-jx-wtm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pm3-wP-Qts" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

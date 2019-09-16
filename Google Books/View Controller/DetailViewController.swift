@@ -12,10 +12,10 @@ class DetailViewController: UIViewController {
     
     var item: Item! {
         didSet {
-            BooksController.shared.fetchBookImage(bookItems: item.volumeInfo) { (image) in
+            BooksController.shared.fetchBookImage(bookItems: item.volumeInfo) { [weak self] (image) in
                 DispatchQueue.main.async {
-                    self.bookImage.image = image
-                    self.updateViews()
+                    self?.bookImage.image = image
+                    self?.updateViews()
                 }
             }
         }
