@@ -6,7 +6,7 @@
 //  Copyright © 2019 Lo Howard. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 final class CoreDataBooks {
@@ -33,7 +33,7 @@ final class CoreDataBooks {
         return container
     }()
     
-    func save(_ volumeInfo: VolumeInfo) {
+    func save(_ volumeInfo: VolumeInfo, image: UIImage) {
         
         checkBooks(volumeInfo)
         
@@ -44,6 +44,7 @@ final class CoreDataBooks {
         coreBooks.setValue(volumeInfo.authors.first, forKey: "authors")
         coreBooks.setValue(volumeInfo.volumeInfoDescription, forKey: "bookDescription")
         coreBooks.setValue(volumeInfo.averageRating, forKey: "averageRating")
+        coreBooks.setValue(image.pngData()!, forKey: "image")
         
         saveContext()
         print("Book saved \(volumeInfo.title)")

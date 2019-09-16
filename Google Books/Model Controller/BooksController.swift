@@ -15,6 +15,8 @@ final class BooksController {
     
     static let shared = BooksController()
     
+    let coreBooks = BooksCD()
+    
     func fetchBooks(books: String, completion: @escaping BooksHandler) {
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?") else { return }
         
@@ -51,7 +53,7 @@ final class BooksController {
     
     func fetchBookImage(bookItems: VolumeInfo, completion: @escaping ImageHandler) {
         guard let url = URL(string: bookItems.imageLinks.smallThumbnail) else { completion(nil); return }
-        
+        print("Fetched image: \(url)")
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             
             if let error = error {
@@ -66,5 +68,18 @@ final class BooksController {
             completion(image)
             
         }.resume()
+    }
+    
+    func getImage(books: String, completion: @escaping (UIImage?) -> Void) {
+        
+        guard let image = coreBooks.url else { return }
+        
+        cache.downloadFrom(endpoint: image) { dat in
+            if let data = dat {
+                DispatchQueue.main.async {
+                    completion(UIImage(data: data))
+                }
+            }
+        }
     }
 }

@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func addToCoreData(_ sender: UIButton) {
-        CoreDataBooks.shared.save(item.volumeInfo)
+        CoreDataBooks.shared.save(item.volumeInfo, image: bookImage.image!)
         
         print(item.volumeInfo.imageLinks.thumbnail)
     }

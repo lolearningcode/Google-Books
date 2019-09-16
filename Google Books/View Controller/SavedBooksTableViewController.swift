@@ -20,6 +20,7 @@ class SavedBooksTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +46,8 @@ class SavedBooksTableViewController: UITableViewController {
         cell.bookTitleLabel.text = books.title
         cell.bookDescriptionLabel.text = books.bookDescription
         cell.ratingsLabel.text = "\(books.averageRating)/5"
+        cell.bookImageView.image = UIImage(data: books.image!)
+        
         return cell
     }
 
